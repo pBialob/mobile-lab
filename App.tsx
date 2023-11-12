@@ -7,6 +7,7 @@ import { Lab1Layout1, Lab1Layout2 } from "./components/solutions/Lab1";
 import { Lab2 } from "./components/solutions/Lab2";
 import { Lab3 } from "./components/solutions/Lab3";
 import { Lab4 } from "./components/solutions/Lab4";
+import { Lab5 } from "./components/solutions/Lab5";
 
 export default function App() {
   const [currentLab, setCurrentLab] = useState("Lab1Layout1");
@@ -23,6 +24,7 @@ export default function App() {
           <Picker.Item label="Lab 2" value="Lab2" />
           <Picker.Item label="Lab 3" value="Lab3" />
           <Picker.Item label="Lab 4" value="Lab4" />
+          <Picker.Item label="Lab 5" value="Lab5" />
         </Picker>
       </View>
       <View className="h-3/5 w-full">
@@ -31,6 +33,7 @@ export default function App() {
         {currentLab === "Lab2" && <Lab2 />}
         {currentLab === "Lab3" && <Lab3 />}
         {currentLab === "Lab4" && <Lab4 />}
+        {currentLab === "Lab5" && <Lab5 />}
       </View>
     </View>
   );
