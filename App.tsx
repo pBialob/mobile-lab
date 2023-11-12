@@ -6,6 +6,7 @@ import { Button, Text, TextInput, View } from "react-native";
 import { Lab1Layout1, Lab1Layout2 } from "./components/solutions/Lab1";
 import { Lab2 } from "./components/solutions/Lab2";
 import { Lab3 } from "./components/solutions/Lab3";
+import { Lab4 } from "./components/solutions/Lab4";
 
 export default function App() {
   const [currentLab, setCurrentLab] = useState("Lab1Layout1");
@@ -21,6 +22,7 @@ export default function App() {
           <Picker.Item label="Lab 1 Layout 2" value="Lab1Layout2" />
           <Picker.Item label="Lab 2" value="Lab2" />
           <Picker.Item label="Lab 3" value="Lab3" />
+          <Picker.Item label="Lab 4" value="Lab4" />
         </Picker>
       </View>
       <View className="h-3/5 w-full">
@@ -28,6 +30,7 @@ export default function App() {
         {currentLab === "Lab1Layout2" && <Lab1Layout2 />}
         {currentLab === "Lab2" && <Lab2 />}
         {currentLab === "Lab3" && <Lab3 />}
+        {currentLab === "Lab4" && <Lab4 />}
       </View>
     </View>
   );
