@@ -8,6 +8,7 @@ import {
   Image,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import classNames from "classnames";
 
 type Task = {
   id: string;
@@ -72,28 +73,33 @@ export const Lab5 = () => {
 
   const renderItem = ({ item }: { item: any }) => (
     <TouchableOpacity
-      style={styles.item}
+      className={`flex-row p-5 border-b border-gray-300`}
       onPress={() => toggleTaskCompletion(item.id)}
     >
       <Image
-        style={styles.image}
+        className="w-[30px] h-[30px] mr-[10px]"
         source={{
           uri: item.completed
             ? "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Check_green_icon.svg/2048px-Check_green_icon.svg.png"
             : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Cross_red_circle.svg/1024px-Cross_red_circle.svg.png",
         }}
       />
-      <View style={styles.textContainer}>
-        <Text style={[styles.title, item.completed && styles.completed]}>
+      <View className="flex-1">
+        <Text
+          className={classNames(
+            `text-lg font-bold`,
+            item.completed && `text-gray-500 line-through`
+          )}
+        >
           {item.title}
         </Text>
-        <Text style={styles.description}>{item.description}</Text>
+        <Text className="text-sm">{item.description}</Text>
       </View>
     </TouchableOpacity>
   );
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1 mt-[20px]">
       <FlatList
         data={tasks}
         renderItem={renderItem}
@@ -102,35 +108,3 @@ export const Lab5 = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: 20,
-  },
-  item: {
-    flexDirection: "row",
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-  },
-  image: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
-  },
-  textContainer: {
-    flex: 1,
-  },
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-  },
-  description: {
-    fontSize: 14,
-  },
-  completed: {
-    textDecorationLine: "line-through",
-    color: "grey",
-  },
-});
